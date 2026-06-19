@@ -37,7 +37,7 @@ button {
     padding: 12px 18px;
     border: none;
     border-radius: 8px;
-    background: #4f46e5;
+    background: #62e78e;
     color: white;
     font-size: 14px;
     font-weight: 600;
@@ -47,7 +47,7 @@ button {
 
 
 button:hover {
-    background: #4338ca;
+    background: #1c8107;
     transform: translateY(-1px);
 }
 
@@ -82,7 +82,7 @@ ul {
 }
 
 li {
-    background: white;
+    background: rgb(168, 165, 165);
     padding: 10px;
     margin-bottom: 8px;
     border-radius: 6px;
