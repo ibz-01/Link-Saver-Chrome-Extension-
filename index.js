@@ -1,7 +1,11 @@
+let savedLinks = []
+const inputEl = document.getElementById("input-el")
+
 document.getElementById("save-btn").addEventListener("click",
     function()
     {
-        console.log("Save button clicked")
+        savedLinks.push(inputEl.value)
+        console.log(inputEl.value)
     }
 )
 
