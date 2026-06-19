@@ -7,8 +7,8 @@ document.getElementById("save-btn").addEventListener("click",
     function()
     {
         savedLinks.push(inputEl.value)
+        inputEl.value = ""
         renderList()
-        console.log(inputEl.value)
     }
 )
 
@@ -25,7 +25,11 @@ function renderList()
 
     for(let i =0; i < savedLinks.length; i++)
     {   
-        listItems += "<li>" + savedLinks[i] + "</li>"
+        listItems += `
+                <li>
+                <a href='${savedLinks[i]}' target='_blank'> ${savedLinks[i]} </a>
+                </li>
+            `
     }
 
     ulEl.innerHTML = listItems
