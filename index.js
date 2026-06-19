@@ -1,7 +1,9 @@
-function save()
-{
-    console.log("save pressed")
-}
+document.getElementById("save-btn").addEventListener("click",
+    function()
+    {
+        console.log("Save button clicked")
+    }
+)
 
 document.getElementById("input-el").addEventListener("click",
     function()
