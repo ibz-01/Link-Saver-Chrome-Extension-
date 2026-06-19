@@ -1,6 +1,7 @@
 let savedLinks = []
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
+let listItems = ""
 
 document.getElementById("save-btn").addEventListener("click",
     function()
@@ -18,6 +19,9 @@ document.getElementById("input-el").addEventListener("click",
 )
 
 for(let i =0; i < savedLinks.length; i++)
-{
-    ulEl.innerHTML += "<li>" + savedLinks[i] + "</li>"
+{   
+    listItems += "<li>" + savedLinks[i] + "</li>"
 }
+
+ulEl.innerHTML = listItems
+
