@@ -6,9 +6,12 @@ const ulEl = document.getElementById("ul-el")
 document.getElementById("save-btn").addEventListener("click",
     function()
     {
-        savedLinks.push(inputEl.value)
-        inputEl.value = ""
-        renderList()
+        if (inputEl.value != "")
+        { 
+            savedLinks.push(inputEl.value)
+            inputEl.value = ""
+            renderList()
+        }
     }
 )
 
