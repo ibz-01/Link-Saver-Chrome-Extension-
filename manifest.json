@@ -4,6 +4,6 @@
     "name": "Link Saver",
     "action": {
         "default_popup": "index.html",
-        "default_icon": "icon.webp"
+        "default_icon": "icon.png"
     }
 }
