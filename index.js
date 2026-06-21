@@ -5,7 +5,7 @@ const ulEl = document.getElementById("ul-el")
 
 const saveBtn = document.getElementById("save-btn")
 const tabBtn = document.getElementById("tab-btn")
-const deleteBtn = document.getElementById("delete-btn")
+const deleteBtn = document.getElementById("del-btn")
 
 
 renderList()
@@ -65,12 +65,22 @@ function renderList()
                 <a href="${savedLinks[i]}" target="_blank">
                     ${savedLinks[i]}
                 </a>
-                <button onclick="deleteLink(${i})">X</button>
+                <button class="delete-btn" data-index="${i}">X</button>
             </li>
         `
     }
 
-    ulEl.innerHTML = listItems
+   ulEl.innerHTML = listItems
+
+    const deleteButtons = document.querySelectorAll(".delete-btn")
+
+    deleteButtons.forEach((button) => {
+        button.addEventListener("click", function () 
+        {
+            const index = button.dataset.index
+            deleteLink(index)
+        })
+    })
 }
 
 function deleteLink(index) 
