@@ -82,13 +82,15 @@ ul {
 }
 
 li {
-    background: rgb(168, 165, 165);
-    padding: 10px;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+li button {
+    padding: 6px 10px;
+    font-size: 12px;
+}
 a {
     text-decoration: none;
     color: #4f46e5;
