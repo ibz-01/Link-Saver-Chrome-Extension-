@@ -14,8 +14,10 @@ document.getElementById("save-btn").addEventListener("click",
     function()
     {
         if (inputEl.value != "")
-        { 
-            savedLinks.push(inputEl.value)
+        {   
+            const formattedUrl = formatUrl(inputEl.value)
+
+            savedLinks.push(formattedUrl)
             localStorage.setItem("savedLinks", JSON.stringify(savedLinks))
             inputEl.value = ""
 
@@ -93,4 +95,12 @@ function deleteLink(index)
     )
 
     renderList()
+}
+
+
+function formatUrl(url) {
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        return "https://" + url
+    }
+    return url
 }
