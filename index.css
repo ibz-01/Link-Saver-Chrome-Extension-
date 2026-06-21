@@ -33,7 +33,7 @@ input:focus {
 }
 
 
-button {
+button:not(.delete-btn) {
     padding: 12px 18px;
     border: none;
     border-radius: 8px;
@@ -82,10 +82,13 @@ ul {
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    transition: background 0.2s ease;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+li:hover {
+    background: #f1f3f9;
 }
 
 li button {
@@ -100,6 +103,9 @@ a {
     font-size: 14px;
     flex: 1;
     overflow-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 a:hover {
@@ -109,6 +115,7 @@ a:hover {
 .delete-btn {
     padding: 4px 8px;
     font-size: 12px;
-    min-width: 30px;
+    min-width: 28px;
+    line-height: 1;
 }
 
