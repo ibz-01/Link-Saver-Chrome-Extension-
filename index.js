@@ -1,7 +1,14 @@
-let savedLinks = []
+let savedLinks = JSON.parse(localStorage.getItem("savedLinks")) || []
+
 const inputEl = document.getElementById("input-el")
 const ulEl = document.getElementById("ul-el")
 
+const saveBtn = document.getElementById("save-btn")
+const tabBtn = document.getElementById("tab-btn")
+const deleteBtn = document.getElementById("delete-btn")
+
+
+renderList()
 
 document.getElementById("save-btn").addEventListener("click",
     function()
@@ -9,11 +16,36 @@ document.getElementById("save-btn").addEventListener("click",
         if (inputEl.value != "")
         { 
             savedLinks.push(inputEl.value)
+            localStorage.setItem("savedLinks", JSON.stringify(savedLinks))
             inputEl.value = ""
+
             renderList()
         }
     }
 )
+
+deleteBtn.addEventListener("click", function () {
+    localStorage.clear()
+    savedLinks = []
+    renderList()
+})
+
+tabBtn.addEventListener("click", function () {
+    chrome.tabs.query(
+        { active: true, currentWindow: true },
+        function (tabs) 
+        {
+            savedLinks.push(tabs[0].url)
+
+            localStorage.setItem(
+                "savedLinks",
+                JSON.stringify(savedLinks)
+            )
+
+            renderList()
+        }
+    )
+})
 
 document.getElementById("input-el").addEventListener("click",
     function()
@@ -22,18 +54,33 @@ document.getElementById("input-el").addEventListener("click",
     }
 )
 
-function renderList()
+function renderList() 
 {
     let listItems = ""
 
-    for(let i =0; i < savedLinks.length; i++)
-    {   
+    for (let i = 0; i < savedLinks.length; i++) 
+    {
         listItems += `
-                <li>
-                <a href='${savedLinks[i]}' target='_blank'> ${savedLinks[i]} </a>
-                </li>
-            `
+            <li>
+                <a href="${savedLinks[i]}" target="_blank">
+                    ${savedLinks[i]}
+                </a>
+                <button onclick="deleteLink(${i})">X</button>
+            </li>
+        `
     }
 
     ulEl.innerHTML = listItems
+}
+
+function deleteLink(index) 
+{
+    savedLinks.splice(index, 1)
+
+    localStorage.setItem(
+        "savedLinks",
+        JSON.stringify(savedLinks)
+    )
+
+    renderList()
 }
